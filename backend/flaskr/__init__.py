@@ -85,7 +85,7 @@ def create_app(test_config=None):
   ten questions per page and pagination at the bottom of the screen for three pages.
   Clicking on the page numbers should update the questions. 
   '''
-  @app.route('/questions/<int: question_id>', methods=['DELETE'])
+  @app.route('/questions/<int:question_id>', methods=['DELETE'])
   def delete_question(question_id):
     try:
       question = Question.query.filter(Question.id == question_id).one_or_none()
@@ -169,7 +169,7 @@ def create_app(test_config=None):
       })
 
 
-  @app.route('/categories/<int: category_id>/questions')
+  @app.route('/categories/<int:category_id>/questions')
   def category_question(category_id):
     category_id = str(category_id)
     selection = Question.query.filter(Question.category == category_id).all()
@@ -191,7 +191,6 @@ def create_app(test_config=None):
         abort(400)
     previous_q = body['previous_questions']
     category_id = body['quiz_category']['id']
-    category_id = str(category_id)
     if category_id == 0:
       if previous_q is not None:
         questions = Question.query.filter(Question.id.notin_(previous_q)).all()
@@ -203,11 +202,11 @@ def create_app(test_config=None):
         Question.category == category_id).all()
       else:
         questions = Question.query.filter(Question.category == category_id).all()
-    next_question = random.choice(questions).format()
     if not next_question:
       abort(404)
     if next_question is None:
       next_question = False
+    next_question = random.choice(questions).format()
     return jsonify({
         'success': True,
         'question': next_question
