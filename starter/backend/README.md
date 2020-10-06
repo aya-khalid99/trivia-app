@@ -115,12 +115,12 @@ The API will return three error types when requests fail:
 # POST/questions
   - General:
     -Create an endpoint to POST a new question, which will require the question and answer text, category, and difficulty score.
-  - curl http:127.0.0.1//questions?page=3 -X POST -H "Content-Type: application/json" -d 
+  - curl http://127.0.0.1/questions?page=3 -X POST -H "Content-Type: application/json" -d 
   
 # DELETE/questions/{question_id}
  - General:
    -DELETE question using a question ID,returns the id of the delete question, success value, total questions, and question list based on current page number to update the frontend.
-  -curl -X DELETE http://127.0.0.1:5000/questions/16?page=2
+ -curl -X DELETE http://127.0.0.1:5000/questions/16?page=2
   
 # GET/categories
  - General:
