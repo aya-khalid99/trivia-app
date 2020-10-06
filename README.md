@@ -13,7 +13,6 @@ That where you come in! Help them finish the trivia app so they can start holdin
 5) Play the quiz game, randomizing either all questions or within a specific category. 
 
 Completing this trivia app will give you the ability to structure plan, implement, and test an API - skills essential for enabling your future applications to communicate with others. 
-
 ## Tasks
 
 There are `TODO` comments throughout project. Start by reading the READMEs in:
