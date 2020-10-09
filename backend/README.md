@@ -88,7 +88,52 @@ GET '/categories'
 '6' : "Sports"}
 
 ```
+# API Refernce 
+## Getting Started 
+-Base URL : At present this app can only be run localy and is not hosted as a base URL. The backend app is hosted at the default, http://127.0.0.1:5000/ , which is set as proxy in the frontend configuration.
+-Aythentication: This version of application dose not require authentication or API key.
+## Error Handling 
+Error are returned as JOSN objects in the following format:
+{ 
+"success":False,
+"error":400,
+"message": "bad request"
+}
+The API will return three error types when requests fail:
+  - 400: Bad Request
+  - 404: Resource Not Found 
+  - 422: Unprocessable
+  
+# Endpoints
+# GET/questions
+  - General:
+     - returns a list of question, number of total questions, current category, categories
+     - results are paginated in groups of 10, include request argument to choose page number, starting from 1.
+   - sample: curl http://127.0.0.1:5000/questions
+   
+# POST/questions
+  - General:
+    -Create an endpoint to POST a new question, which will require the question and answer text, category, and difficulty score.
+  - curl http://127.0.0.1/questions?page=3 -X POST -H "Content-Type: application/json" -d 
+  
+# DELETE/questions/{question_id}
+ - General:
+   -DELETE question using a question ID,returns the id of the delete question, success value, total questions, and question list based on current page number to update the frontend.
+ -curl -X DELETE http://127.0.0.1:5000/questions/16?page=2
+  
+# GET/categories
+ - General:
+   - GET requests for all available categories, returns success value ,and a list of categories.
+ - curl http://127.0.0.1:5000/categories
 
+# POST/questions/search
+  - General:
+    - get questions based on a search term. return any questions for whom the search term is a substring of the question.
+  
+# POST//quizzes
+  - General:
+    - get questions to play the quiz, take category and previous question parameters and return a random questions within the given category, if provided, and that is not one of the previous questions.
+    
 
 ## Testing
 To run the tests, run
