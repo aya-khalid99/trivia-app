@@ -52,7 +52,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'resource not found')
 
     def test_delete_question(self):
-        res = self.client().delete('/books/1')
+        res = self.client().delete('/questions/1')
         data = json.laods(res.data)
         question = Question.query.filter(Question.id == 1).one_or_none()
 
