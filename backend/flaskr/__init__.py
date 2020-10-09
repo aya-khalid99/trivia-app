@@ -202,11 +202,12 @@ def create_app(test_config=None):
         Question.category == category_id).all()
       else:
         questions = Question.query.filter(Question.category == category_id).all()
+    next_question = random.choice(questions).format()
     if not next_question:
       abort(404)
     if next_question is None:
       next_question = False
-    next_question = random.choice(questions).format()
+    
     return jsonify({
         'success': True,
         'question': next_question
